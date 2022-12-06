@@ -1,12 +1,18 @@
 from django import forms
-from django.contrib import admin
 from .models import Article
+from django.conf import settings
 
-class ArticalForm(forms.ModelForm):
+support_language = ["title_"+x[0] for x in settings.LANGUAGES]
 
+class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
+        exclude = ('title',)
 
-class PersonAdmin(admin.ModelAdmin):
-    exclude = ['age']
-    form = ArticalForm
+    def __init__(self, *args, **kwargs):
+        super(ArticleForm, self).__init__(*args, **kwargs)
+        for key in support_language:
+            self.fields[key] = forms.CharField(max_length=200, label=key)
+        print("-----------------------------------------------------------")
+        print(self.fields)
+        print("-----------------------------------------------------------")
