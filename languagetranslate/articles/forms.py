@@ -12,7 +12,5 @@ class ArticleForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ArticleForm, self).__init__(*args, **kwargs)
         for key in support_language:
-            self.fields[key] = forms.CharField(max_length=200, label=key)
-        print("-----------------------------------------------------------")
-        print(self.fields)
-        print("-----------------------------------------------------------")
+            if key not in support_language:
+                self.fields[key] = forms.CharField(max_length=200, label=key)
