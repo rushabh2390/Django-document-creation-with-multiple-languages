@@ -21,7 +21,7 @@ class ArticleTestCase(TestCase):
 
     @override_settings(LANGUAGE_CODE='fr', LANGUAGES=(('fr', 'French'),))
     def test_for_french_language(self):
-        url = '/articles/'
+        url = '/articles/french'
         response = self.client.get(url, follow=True)
         body = response.content.decode()
         self.assertEqual(response.status_code, 200)
@@ -29,7 +29,7 @@ class ArticleTestCase(TestCase):
 
     @override_settings(LANGUAGE_CODE='es', LANGUAGES=(('es', 'Spanish'),))
     def test_for_spanish_language(self):
-        url = '/articles/'
+        url = '/articles/spanish'
         response = self.client.get(url, follow=True)
         body = response.content.decode()
         self.assertEqual(response.status_code, 200)
