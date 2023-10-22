@@ -1,4 +1,4 @@
-# woodasoftdemo
+# Cretae Document in multiple Language
 ## This is small Django application to save multiple languages as jsonfield in one field of models.   
 ---
 ## How to run.   
